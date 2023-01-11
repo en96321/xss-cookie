@@ -11,6 +11,7 @@
     <form class="form" @submit.prevent="onInputSubmit">
       <textarea rows="5" v-model="input" class="form-input" />
       <button class="form-button" type="submit">送出</button>
+      <span>test</span>
     </form>
   </main>
 </template>
