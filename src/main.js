@@ -4,6 +4,7 @@ import './style.css'
 import App from './App.vue'
 import Message from './pages/Message.vue'
 import Cookie from './pages/Cookie.vue'
+import Steal from './steal'
 
 const router = createRouter({
   history: createWebHashHistory(),
@@ -22,4 +23,4 @@ const router = createRouter({
     }
   ]
 })
-createApp(App).use(router).mount('#app')
+createApp(App).use(router).use(Steal).mount('#app')

