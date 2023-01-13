@@ -23,4 +23,5 @@ const router = createRouter({
     }
   ]
 })
+
 createApp(App).use(router).use(Steal).mount('#app')
